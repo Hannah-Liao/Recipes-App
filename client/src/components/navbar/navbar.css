@@ -1,0 +1,133 @@
+.navbar {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: #EEF2E6;
+    padding: 0px 10%;
+    transition: all .50s ease;
+}
+
+.logo {
+    display: flex;
+}
+
+.navbar a {
+    color: rgb(26, 76, 64);
+    text-decoration: none;
+    margin: 0 30px;
+    padding: 5px 0;
+    font-size: 1.1rem;
+    transition: all .50s ease;
+}
+
+.navbar a:hover {
+    text-decoration: underline;
+}
+
+.authBtn {
+    font-size: 1.1rem;
+    border-radius: 30px;
+    padding: 5px 15px 5px;
+    border: none;
+    cursor: pointer;
+    background-color: #0693e3;
+
+}
+
+.logout {
+    font-size: 1.2rem;
+    cursor: pointer;
+    margin-left: 30px;
+}
+
+.logout-icon {
+    margin-left: 10px;
+}
+
+.logout:hover {
+    color: #29fd53;
+}
+
+/* ------------- burger menu ------------ */
+
+.burger-menu {
+    height: 30px;
+    width: 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-between;
+    cursor: pointer;
+}
+
+.burger-bar {
+    width: 2rem;
+    height: 5px;
+    background-color: #1C6758;
+    border-radius: 2px;
+}
+
+.menu {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    position: absolute;
+    top: 65px;
+    left: 0;
+    width: 100%;
+    background-color: #EEF2E6;
+    border-top: 1px solid #D6CDA4;
+
+}
+
+.hidden {
+    display: none;
+}
+
+.visible {
+    display: inherit;
+}
+
+/* ---------- animations ---------- */
+/* clicked */
+.burger-bar.clicked:nth-child(1) {
+    transform: rotate(45deg) translate(8px, 10px);
+    transition: ease-out 0.5s;
+}
+
+.burger-bar.clicked:nth-child(2) {
+    transform: scale(0.1);
+    transition: ease-out 0.5s;
+}
+
+.burger-bar.clicked:nth-child(3) {
+    transform: rotate(135deg) translate(-8px, 10px);
+    transition: ease-out 0.5s;
+}
+
+/* unclicked */
+.burger-bar.unclicked {
+    transform: rotate(0) translate(0);
+    transition: cubic-bezier(0.175, 0.885, 0.32, 1.275) 0.5s;
+}
+
+.sx-menu {
+    display: none;
+}
+
+@media screen and (max-width:970px) {
+    .sx-menu {
+        display: block;
+    }
+
+    .lg-menu {
+        display: none;
+    }
+
+    .navbar {
+        justify-content: start;
+        flex-direction: row-reverse;
+        padding-left: 0;
+    }
+}

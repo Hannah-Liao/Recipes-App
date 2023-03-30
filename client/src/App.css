@@ -1,0 +1,145 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;400;600;700&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  color: #1A120B;
+
+}
+
+.body-div {
+  height: 100vh;
+}
+
+/* -------------------- home page css ------------------- */
+.home {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.home-text {
+  padding-left: 5%;
+  font-weight: 700;
+  font-size: 2rem;
+  width: 60%;
+}
+
+.home a {
+  text-decoration: none;
+  color: #fff;
+}
+
+.home img {
+  width: 60%;
+  transform: rotate(10deg);
+  position: absolute;
+  top: 100px;
+  z-index: -1;
+  right: 0;
+}
+
+/* -------------------- auth page css ------------------- */
+/* -------------------- create recipe page css ------------------- */
+.createRecipe,
+.auth {
+  background-image: url(./images/bg.svg);
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.createRecipe-form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  background: rgb(174, 194, 182, .8);
+  border-radius: 5px;
+  min-width: 600px;
+
+}
+
+.createRecipe-form form {
+  display: flex;
+  flex-direction: column;
+}
+
+.createRecipe h2 {
+  margin-bottom: 1.1rem;
+}
+
+.createRecipe input,
+.createRecipe textarea {
+  padding: 10px;
+  font-size: 16px;
+  border-radius: 5px;
+  margin-bottom: 0.8rem;
+
+}
+
+/* -------------------- recipesBank & savedRecipes css ------------------- */
+.recipes-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, auto));
+  align-items: start;
+  grid-gap: 3rem;
+  padding: 3%;
+}
+
+.recipes-row {
+  position: relative;
+  overflow: hidden;
+  border-radius: 8px;
+}
+
+.recipes-row img {
+  max-width: 100%;
+  margin-bottom: 10px;
+  border-radius: 8px;
+  display: block;
+  transition: transform 0.5s;
+}
+
+.recipes-row:hover img {
+  transform: scale(1.1);
+}
+
+.underline-card-text {
+  background-image: linear-gradient(#0000 calc(100% - 2px), #1A120B 2px);
+  width: 100%;
+}
+
+.underline-card-text:hover {
+  background-image: none;
+  cursor: pointer;
+}
+
+/* -------------------- buttons css ------------------- */
+.btn {
+  border-radius: 20px;
+  padding: 10px;
+  font-size: 1rem;
+  background-color: #1C6758;
+  border: none;
+  cursor: pointer;
+}
+
+.btn:hover {
+  background-color: rgb(28, 103, 88, .9);
+}
+
+.delete-btn {
+  background-color: rgb(230, 72, 72);
+}
+
+.delete-btn:hover {
+  background-color: rgb(230, 72, 72, .9);
+}
