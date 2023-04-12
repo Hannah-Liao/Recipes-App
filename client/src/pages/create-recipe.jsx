@@ -13,7 +13,7 @@ export const CreateRecipe = () => {
     useEffect(() => {
         const getCreator = async () => {
             try {
-                const response = await axios.post("http://localhost:3001/auth/user", { userID });
+                const response = await axios.post("http://localhost:3001/auth/user", { userID }, { headers: { authorization: cookies.access_token } });
                 setCreator(response.data.username)
             } catch (err) {
                 console.log(err)

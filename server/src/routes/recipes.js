@@ -1,5 +1,5 @@
 import express from "express";
-import { verifyToken } from "./users.js";
+import { verifyToken } from "../utils/verifyToken.js";
 import { getRecipes, createRecipe, saveRecipe, getSavedRecipes, getSavedRecipeID, deleteSavedRecipeID } from "../controllers/recipes.js";
 
 const router = express.Router();

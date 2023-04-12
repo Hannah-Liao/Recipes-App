@@ -7,6 +7,7 @@ const recipeSchema = new mongoose.Schema({
     instructions: { type: String, required: true },
     imageUrl: { type: String, required: true },
     cookingTime: { type: Number, required: true },
+    source: { type: String },
     userOwner: { type: String, required: true }
 });
 
