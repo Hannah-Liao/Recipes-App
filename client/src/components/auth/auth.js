@@ -15,8 +15,10 @@ export const Login = () => {
         e.preventDefault();
 
         try {
+            /////////////////////////need to change here ,anyone can login//////////////
             const response = await axios.post("http://localhost:3001/auth/login", { username, password });
             setCookies("access_token", response.data.token);
+            console.log(response.data)
             window.localStorage.setItem("userID", response.data.userID)
             navigate("/");
         } catch (err) {

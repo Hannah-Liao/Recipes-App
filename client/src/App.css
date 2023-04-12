@@ -48,7 +48,7 @@ body {
 /* -------------------- create recipe page css ------------------- */
 .createRecipe,
 .auth {
-  background-image: url(./images/bg.svg);
+  background-image: url(./assets/images/bg.svg);
   height: 100vh;
   display: flex;
   justify-content: center;

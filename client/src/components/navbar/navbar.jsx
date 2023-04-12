@@ -2,7 +2,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { useCookies } from "react-cookie";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUser, faRightToBracket } from '@fortawesome/free-solid-svg-icons';
-import logo from "/Users/hanna/projects/recipe-app/client/src/images/logo.png";
+import logo from "../../assets/images/logo.png";
 import './navbar.css';
 import { useState } from "react";
 
