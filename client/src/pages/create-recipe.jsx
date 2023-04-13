@@ -1,27 +1,17 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import axios from "axios";
-import { useGetUserID } from "../hooks/useGetUserID";
+
 import { useNavigate } from "react-router-dom";
-import { useCookies } from "react-cookie";
+import { AuthContext } from "../context/AuthContext";
+import { BASE_URL } from "../utils/config";
 
 export const CreateRecipe = () => {
-    const userID = useGetUserID();
+
+    const { user } = useContext(AuthContext);
+    const creator = user.data.username;
+    const token = user.token;
+
     const navigate = useNavigate();
-    const [cookies, _] = useCookies(["access_token"])
-    const [creator, setCreator] = useState("");
-
-    useEffect(() => {
-        const getCreator = async () => {
-            try {
-                const response = await axios.post("http://localhost:3001/auth/user", { userID }, { headers: { authorization: cookies.access_token } });
-                setCreator(response.data.username)
-            } catch (err) {
-                console.log(err)
-            }
-        };
-        getCreator();
-
-    }, []);
 
     const [recipe, setRecipe] = useState({
         name: "",
@@ -29,12 +19,12 @@ export const CreateRecipe = () => {
         instructions: "",
         imageUrl: "",
         cookingTime: 0,
-        userOwner: "",
+        userOwner: creator,
     });
 
     const handleChange = (e) => {
         const { name, value } = e.target;
-        setRecipe({ ...recipe, userOwner: creator, [name]: value })
+        setRecipe({ ...recipe, [name]: value })
     }
 
     const addIngredient = (e) => {
@@ -52,12 +42,11 @@ export const CreateRecipe = () => {
         event.preventDefault();
 
         try {
-            await axios.post("http://localhost:3001/recipes", recipe, { headers: { authorization: cookies.access_token } })
-            alert("recipe created");
-            console.log(recipe)
+            const res = await axios.post(`${BASE_URL}/recipes`, recipe, { headers: { authorization: token } })
+
             navigate("/");
         } catch (err) {
-            console.log(err)
+            alert(err.response.data.message);
         }
 
     };
@@ -81,7 +70,7 @@ export const CreateRecipe = () => {
                             onChange={(e) => { handleIngredientChange(e, idx) }}
                         />
                     ))}
-                    <button className="btn" type="button" onClick={addIngredient}>Add ingredient</button>
+                    <button className="btn primary_btn" type="button" onClick={addIngredient}>Add ingredient</button>
 
                     <label htmlFor="instructions"> Instructions</label>
                     <textarea id="instructions" name="instructions" onChange={handleChange}></textarea>
@@ -92,7 +81,7 @@ export const CreateRecipe = () => {
                     <label htmlFor="cookingTime"> Cooking Time</label>
                     <input type="number" id="cookingTime" name="cookingTime" onChange={handleChange} />
 
-                    <button className="btn" type="submit">Submit recipe</button>
+                    <button className="btn primary_btn" type="submit">Submit recipe</button>
                 </form>
 
             </div>

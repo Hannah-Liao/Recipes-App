@@ -1,16 +1,21 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
 import axios from "axios";
-import { useGetUserID } from "../hooks/useGetUserID";
+
+import { AuthContext } from "../context/AuthContext";
+import { BASE_URL } from "../utils/config";
+
 
 export const SavedRecipes = () => {
     const [savedRecipes, setSavedRecipes] = useState([]);
-    const userID = useGetUserID();
+
+    const { user } = useContext(AuthContext);
+    const userID = user.data._id;
 
     useEffect(() => {
 
         const fetchSavedRecipe = async () => {
             try {
-                const response = await axios.get(`http://localhost:3001/recipes/savedRecipes/${userID}`);
+                const response = await axios.get(`${BASE_URL}/recipes/savedRecipes/${userID}`);
                 setSavedRecipes(response.data.savedRecipes)
             } catch (err) {
                 console.log(err)
@@ -22,7 +27,7 @@ export const SavedRecipes = () => {
 
     const DeleteRecipe = async (savedRecipesID) => {
         try {
-            const response = await axios.patch(`http://localhost:3001/recipes/savedRecipes/ids/${userID}`,
+            const response = await axios.patch(`${BASE_URL}/recipes/savedRecipes/ids/${userID}`,
                 { savedRecipesID }
             );
         } catch (err) {

@@ -6,7 +6,7 @@ const router = express.Router();
 
 router.get('/', getRecipes);
 router.post('/', verifyToken, createRecipe);
-router.put('/', verifyToken, saveRecipe);
+router.put('/', saveRecipe);
 router.get('/savedRecipes/:userID', getSavedRecipes);
 router.get('/savedRecipes/ids/:userID', getSavedRecipeID);
 router.patch('/savedRecipes/ids/:userID', deleteSavedRecipeID);

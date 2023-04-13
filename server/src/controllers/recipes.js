@@ -15,9 +15,9 @@ export const createRecipe = async (req, res) => {
 
     try {
         const recipes = await recipe.save();
-        res.json(recipes);
+        res.status(200).json({ success: true, message: "Recipe created successfully", data: recipes })
     } catch (err) {
-        res.json(err);
+        res.status(500).json({ success: false, message: "Failed to create. Try again" })
     }
 };
 
@@ -29,7 +29,7 @@ export const saveRecipe = async (req, res) => {
 
         user.savedRecipes.push(recipe);
         await user.save();
-        res.json({ savedRecipes: user.savedRecipes });
+        res.status(200).json({ savedRecipes: user.savedRecipes });
     } catch (err) {
         res.json(err);
     }
@@ -40,9 +40,9 @@ export const getSavedRecipes = async (req, res) => {
     try {
         const user = await User.findById(req.params.userID);
         const savedRecipes = await Recipe.find({ _id: { $in: user.savedRecipes } })
-        res.json({ savedRecipes });
+        res.status(200).json({ success: true, savedRecipes });
     } catch (err) {
-        res.json(err);
+        res.status(404).json({ success: false, message: "Not found" })
     }
 };
 

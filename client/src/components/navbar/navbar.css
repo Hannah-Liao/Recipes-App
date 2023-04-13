@@ -1,15 +1,12 @@
 .navbar {
     width: 100%;
+    height: 80px;
+    line-height: 80px;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    background: #EEF2E6;
-    padding: 0px 10%;
+    padding: 0px 3%;
     transition: all .50s ease;
-}
-
-.logo {
-    display: flex;
 }
 
 .navbar a {
@@ -21,36 +18,58 @@
     transition: all .50s ease;
 }
 
-.navbar a:hover {
+.logo {
+    display: flex;
+    width: 20%;
+}
+
+.navigation a:hover {
     text-decoration: underline;
 }
 
-.authBtn {
-    font-size: 1.1rem;
-    border-radius: 30px;
-    padding: 5px 15px 5px;
-    border: none;
-    cursor: pointer;
-    background-color: #0693e3;
+.nav_btns {
+    display: flex;
+    align-items: center;
+}
+
+.nav_right {
+    display: flex;
+    align-items: center;
 
 }
 
-.logout {
+.nav_right .faUser {
+    color: rgb(26, 76, 64);
+}
+
+.nav_right h5 {
     font-size: 1.2rem;
+    margin-left: 8px;
+}
+
+.nav_right button {
+    font-size: 1.1rem;
     cursor: pointer;
     margin-left: 30px;
 }
 
-.logout-icon {
-    margin-left: 10px;
+.nav_right button:hover {
+    opacity: 0.9;
 }
 
-.logout:hover {
-    color: #29fd53;
+.sticky_header {
+    width: 100%;
+    height: 80px;
+    line-height: 80px;
+    background: #fff;
+    position: sticky;
+    top: 0;
+    left: 0;
+    box-shadow: 3px 3px 8px -3px #ddd;
+    z-index: 999;
 }
 
 /* ------------- burger menu ------------ */
-
 .burger-menu {
     height: 30px;
     width: 2rem;
@@ -69,16 +88,15 @@
 }
 
 .menu {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    position: absolute;
-    top: 65px;
+    position: fixed;
+    top: 0;
     left: 0;
-    width: 100%;
+    width: calc(100% - 75%);
+    height: 100%;
     background-color: #EEF2E6;
-    border-top: 1px solid #D6CDA4;
-
+    flex-direction: column;
+    justify-content: center;
+    z-index: 999;
 }
 
 .hidden {
@@ -112,12 +130,13 @@
     transition: cubic-bezier(0.175, 0.885, 0.32, 1.275) 0.5s;
 }
 
-.sx-menu {
+.mobile-menu {
     display: none;
 }
 
-@media screen and (max-width:970px) {
-    .sx-menu {
+/* ========== responsive design ========== */
+@media screen and (max-width:992px) {
+    .mobile-menu {
         display: block;
     }
 
@@ -126,8 +145,26 @@
     }
 
     .navbar {
-        justify-content: start;
-        flex-direction: row-reverse;
+        justify-content: space-around;
         padding-left: 0;
+    }
+
+    .logo {
+        width: 50%;
+    }
+
+    .burger-menu {
+        margin-left: 10px;
+    }
+
+}
+
+@media screen and (max-width:768px) {
+    .burger-menu {
+        margin-left: 10px;
+    }
+
+    .menu {
+        width: calc(100% - 50%);
     }
 }

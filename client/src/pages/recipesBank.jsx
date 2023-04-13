@@ -1,18 +1,21 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
 import axios from "axios";
-import { useGetUserID } from "../hooks/useGetUserID";
-import { useCookies } from "react-cookie";
+
+import { AuthContext } from "../context/AuthContext";
+import { BASE_URL } from "../utils/config";
 
 export const RecipesBank = () => {
     const [recipes, setRecipes] = useState([]);
     const [savedRecipesID, setSavedRecipesID] = useState([]);
-    const [cookies, _] = useCookies(["access_token"])
-    const userID = useGetUserID();
+
+    const { user } = useContext(AuthContext);
+    const userID = user.data._id;
+    const token = user.token
 
     useEffect(() => {
         const fetchRecipe = async () => {
             try {
-                const response = await axios.get("http://localhost:3001/recipes");
+                const response = await axios.get(`${BASE_URL}/recipes`);
                 setRecipes(response.data)
             } catch (err) {
                 console.log(err)
@@ -21,7 +24,7 @@ export const RecipesBank = () => {
 
         const fetchSavedRecipesID = async () => {
             try {
-                const response = await axios.get(`http://localhost:3001/recipes/savedRecipes/ids/${userID}`);
+                const response = await axios.get(`${BASE_URL}/recipes/savedRecipes/ids/${userID}`);
                 setSavedRecipesID(response.data.savedRecipes)
 
             } catch (err) {
@@ -30,15 +33,16 @@ export const RecipesBank = () => {
         };
 
         fetchRecipe();
-        if (cookies.access_token) { fetchSavedRecipesID(); }
+        if (user) { fetchSavedRecipesID(); }
 
     }, []);
 
     const saveRecipe = async (recipeID) => {
         try {
-            const response = await axios.put("http://localhost:3001/recipes",
+            const response = await axios.put(`${BASE_URL}/recipes`,
                 { recipeID, userID },
-                { headers: { authorization: cookies.access_token } });
+                { headers: { authorization: token } });
+
             setSavedRecipesID(response.data.savedRecipes)
         } catch (err) {
             console.log(err)
