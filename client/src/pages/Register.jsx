@@ -18,7 +18,7 @@ const Register = () => {
         e.preventDefault();
 
         try {
-            const res = await axios.post(`${BASE_URL}/auth/register`, { username, email, password });
+            await axios.post(`${BASE_URL}/auth/register`, { username, email, password });
 
             dispatch({ type: "REGISTER_SUCCESS" })
             navigate("/login")

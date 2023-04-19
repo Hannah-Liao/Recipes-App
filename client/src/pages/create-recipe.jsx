@@ -1,4 +1,4 @@
-import { useState, useEffect, useContext } from "react";
+import { useState, useContext, useEffect } from "react";
 import axios from "axios";
 
 import { useNavigate } from "react-router-dom";
@@ -8,15 +8,15 @@ import { BASE_URL } from "../utils/config";
 export const CreateRecipe = () => {
 
     const { user } = useContext(AuthContext);
-    const creator = user.data.username;
-    const token = user.token;
+    const creator = user?.data.username;
+    const token = user?.token;
 
     const navigate = useNavigate();
 
     const [recipe, setRecipe] = useState({
         name: "",
         ingredients: [],
-        instructions: "",
+        instructions: [],
         imageUrl: "",
         cookingTime: 0,
         userOwner: creator,
@@ -31,6 +31,10 @@ export const CreateRecipe = () => {
         setRecipe({ ...recipe, ingredients: [...recipe.ingredients, ""] })
     }
 
+    const addInstruction = (e) => {
+        setRecipe({ ...recipe, instructions: [...recipe.instructions, ""] })
+    }
+
     const handleIngredientChange = (e, idx) => {
         const { value } = e.target;
         const ingredients = recipe.ingredients;
@@ -38,11 +42,18 @@ export const CreateRecipe = () => {
         setRecipe({ ...recipe, ingredients })
     }
 
+    const handleInstructionsChange = (e, idx) => {
+        const { value } = e.target;
+        const instructions = recipe.instructions;
+        instructions[idx] = value
+        setRecipe({ ...recipe, instructions })
+    }
+
     const handelSubmit = async (event) => {
         event.preventDefault();
 
         try {
-            const res = await axios.post(`${BASE_URL}/recipes`, recipe, { headers: { authorization: token } })
+            await axios.post(`${BASE_URL}/recipes`, recipe, { headers: { authorization: token } })
 
             navigate("/");
         } catch (err) {
@@ -51,14 +62,17 @@ export const CreateRecipe = () => {
 
     };
 
+    useEffect(() => {
+        window.scrollTo(0, 0)
+    }, [])
+
     return (
         <div className="createRecipe">
             <div className="createRecipe-form">
                 <h2>Create Recipe</h2>
 
                 <form onSubmit={handelSubmit}>
-                    <label htmlFor="name">Recipe Name</label>
-                    <input type="text" id="name" name="name" onChange={handleChange} />
+                    <input type="text" id="name" name="name" placeholder="Recipe Name" onChange={handleChange} />
 
                     <label htmlFor="ingredients"> Ingredients</label>
                     {recipe.ingredients.map((ingredient, idx) => (
@@ -73,13 +87,22 @@ export const CreateRecipe = () => {
                     <button className="btn primary_btn" type="button" onClick={addIngredient}>Add ingredient</button>
 
                     <label htmlFor="instructions"> Instructions</label>
-                    <textarea id="instructions" name="instructions" onChange={handleChange}></textarea>
+                    {recipe.instructions.map((step, idx) => (
+                        <textarea
+                            key={idx}
+                            name="instructions"
+                            placeholder={`step ${idx + 1} ...`}
+                            value={step}
+                            onChange={(e) => { handleInstructionsChange(e, idx) }}
+                        ></textarea>
+                    ))}
+                    <button className="btn primary_btn" type="button" onClick={addInstruction}>Add steps</button>
 
-                    <label htmlFor="imageUrl"> Image Url</label>
-                    <input type="text" id="imageUrl" name="imageUrl" onChange={handleChange} />
+                    <input type="text" id="imageUrl" name="imageUrl" placeholder="Image Url" onChange={handleChange} />
 
-                    <label htmlFor="cookingTime"> Cooking Time</label>
-                    <input type="number" id="cookingTime" name="cookingTime" onChange={handleChange} />
+                    <input type="number" id="cookingTime" name="cookingTime" placeholder="Cooking Time" onChange={handleChange} />
+
+                    <input type="text" id="source" name="source" placeholder="Source" onChange={handleChange} />
 
                     <button className="btn primary_btn" type="submit">Submit recipe</button>
                 </form>

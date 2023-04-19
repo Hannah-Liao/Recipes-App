@@ -61,6 +61,10 @@ ul {
   right: 0;
 }
 
+.slick-slide {
+  padding: 2px;
+}
+
 /* -------------------- auth page css ------------------- */
 /* -------------------- create recipe page css ------------------- */
 .createRecipe,
@@ -93,21 +97,22 @@ ul {
   margin-bottom: 1.1rem;
 }
 
-.createRecipe input,
+.createRecipe-form form input,
 .createRecipe textarea {
   padding: 10px;
   font-size: 16px;
   border-radius: 5px;
   margin-bottom: 0.8rem;
-
+  width: 100%;
 }
 
 /* -------------------- recipesBank & savedRecipes css ------------------- */
 .recipes-container {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, auto));
+  /* grid-template-columns: repeat(auto-fit, minmax(300px, 300px)); */
+  grid-template-columns: 1fr 1fr 1fr 1fr;
   align-items: start;
-  grid-gap: 3rem;
+  grid-gap: 1.5rem;
   padding: 3%;
 }
 
@@ -137,6 +142,33 @@ ul {
 .underline-card-text:hover {
   background-image: none;
   cursor: pointer;
+}
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.pagination span {
+  width: 2rem;
+  height: 2rem;
+  padding: 5px;
+  margin: 5px;
+  border-radius: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--secondary-color);
+  color: var(--heading-color);
+  font-size: 1.1rem;
+  cursor: pointer;
+  font-weight: 700;
+}
+
+.active_page {
+  background: var(--secondary-color);
+  color: #fff !important;
 }
 
 /* -------------------- buttons css ------------------- */
@@ -231,4 +263,18 @@ ul {
 
 .secondary_btn a:hover {
   color: inherit;
+}
+
+/* ========== responsive design ========== */
+@media only screen and (max-width:992px) {
+  .recipes-container {
+    grid-template-columns: 1fr 1fr 1fr;
+    padding: 2%;
+  }
+}
+
+@media only screen and (max-width:768px) {
+  .recipes-container {
+    grid-template-columns: 1fr;
+  }
 }
