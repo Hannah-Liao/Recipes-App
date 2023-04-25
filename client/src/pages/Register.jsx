@@ -1,7 +1,8 @@
 import React, { useState, useContext } from 'react'
 import axios from "axios"
 import { useNavigate, Link } from "react-router-dom";
-import './auth.css';
+import '../styles/auth.css';
+import registerImg from "../assets/images/sign_up.svg";
 
 import { AuthContext } from '../context/AuthContext';
 import { BASE_URL } from '../utils/config';
@@ -28,24 +29,28 @@ const Register = () => {
     }
 
     return (
-        <div className="auth-container">
-            <form onSubmit={handleSubmit}>
-                <h2>Register</h2>
-                <div className="form-group">
-                    <input type="text" id="username" placeholder='username' value={username} onChange={(e) => setUsername(e.target.value)} />
-                </div>
-                <div className="form-group">
-                    <input type="email" id="email" placeholder='Email' value={email} onChange={(e) => setEmail(e.target.value)} />
-                </div>
+        <section className='auth'>
+            <img src={registerImg} alt="" />
 
-                <div className="form-group">
-                    <input type="password" id="password" placeholder='Password' value={password} onChange={(e) => setPassword(e.target.value)} />
-                </div>
-                <button className="btn" type="submit">Register</button>
-            </form>
+            <div className="auth-container">
+                <form onSubmit={handleSubmit}>
+                    <h2>Register</h2>
+                    <div className="form-group">
+                        <input type="text" id="username" placeholder='username' value={username} onChange={(e) => setUsername(e.target.value)} />
+                    </div>
+                    <div className="form-group">
+                        <input type="email" id="email" placeholder='Email' value={email} onChange={(e) => setEmail(e.target.value)} />
+                    </div>
 
-            <p>Already have an account? <Link to="/login">Login</Link></p>
-        </div>
+                    <div className="form-group">
+                        <input type="password" id="password" placeholder='Password' value={password} onChange={(e) => setPassword(e.target.value)} />
+                    </div>
+                    <button className="btn auth_btn" type="submit">Register</button>
+                </form>
+
+                <p>Already have an account? <Link to="/login">Login</Link></p>
+            </div>
+        </section>
     );
 
 }

@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;400;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Island+Moments&family=Poppins:wght@300;400;500;600;700;800&display=swap');
 
 * {
   margin: 0;
@@ -7,21 +7,36 @@
 }
 
 :root {
-  --primary-color: #ff7e01;
-  --secondary-color: #faa935;
-  --heading-color: #0b2727;
+  --primary-color: #1C6758;
+  --secondary-color: #BDD2B6;
+  --heading-color: #1a4c40;
   --text-color: #6e7074;
   --font-name: 'Poppins', sans-serif;
   --subtitle-font-name: "Island Moments", cursive;
 }
 
 body {
-  font-family: 'Poppins', sans-serif;
+  font-family: var(--font-name);
   color: var(--heading-color);
 }
 
-.body-div {
-  height: 100vh;
+section {
+  padding: 5% 4%;
+}
+
+h1 {
+  font-size: 4rem;
+  font-weight: 800;
+}
+
+h2 {
+  font-size: 2rem;
+  font-weight: 700;
+}
+
+h3 {
+  font-size: 1.5rem;
+  font-weight: 500;
 }
 
 a {
@@ -29,157 +44,7 @@ a {
   color: unset;
 }
 
-ul {
-  list-style: none;
-}
-
-/* -------------------- home page css ------------------- */
-.home {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.home-text {
-  padding-left: 5%;
-  font-weight: 700;
-  font-size: 2rem;
-  width: 60%;
-}
-
-.home a {
-  text-decoration: none;
-  color: #fff;
-}
-
-.home img {
-  width: 60%;
-  transform: rotate(10deg);
-  position: absolute;
-  top: 100px;
-  z-index: -1;
-  right: 0;
-}
-
-.slick-slide {
-  padding: 2px;
-}
-
-/* -------------------- auth page css ------------------- */
-/* -------------------- create recipe page css ------------------- */
-.createRecipe,
-.auth {
-  background-image: url(./assets/images/bg.svg);
-  height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.createRecipe-form {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  padding: 20px;
-  background: rgb(174, 194, 182, .8);
-  border-radius: 5px;
-  min-width: 600px;
-
-}
-
-.createRecipe-form form {
-  display: flex;
-  flex-direction: column;
-}
-
-.createRecipe h2 {
-  margin-bottom: 1.1rem;
-}
-
-.createRecipe-form form input,
-.createRecipe textarea {
-  padding: 10px;
-  font-size: 16px;
-  border-radius: 5px;
-  margin-bottom: 0.8rem;
-  width: 100%;
-}
-
-/* -------------------- recipesBank & savedRecipes css ------------------- */
-.recipes-container {
-  display: grid;
-  /* grid-template-columns: repeat(auto-fit, minmax(300px, 300px)); */
-  grid-template-columns: 1fr 1fr 1fr 1fr;
-  align-items: start;
-  grid-gap: 1.5rem;
-  padding: 3%;
-}
-
-.recipes-row {
-  position: relative;
-  overflow: hidden;
-  border-radius: 8px;
-}
-
-.recipes-row img {
-  max-width: 100%;
-  margin-bottom: 10px;
-  border-radius: 8px;
-  display: block;
-  transition: transform 0.5s;
-}
-
-.recipes-row:hover img {
-  transform: scale(1.1);
-}
-
-.underline-card-text {
-  background-image: linear-gradient(#0000 calc(100% - 2px), #1A120B 2px);
-  width: 100%;
-}
-
-.underline-card-text:hover {
-  background-image: none;
-  cursor: pointer;
-}
-
-.pagination {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.pagination span {
-  width: 2rem;
-  height: 2rem;
-  padding: 5px;
-  margin: 5px;
-  border-radius: 50px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border: 1px solid var(--secondary-color);
-  color: var(--heading-color);
-  font-size: 1.1rem;
-  cursor: pointer;
-  font-weight: 700;
-}
-
-.active_page {
-  background: var(--secondary-color);
-  color: #fff !important;
-}
-
 /* -------------------- buttons css ------------------- */
-.delete-btn {
-  background-color: rgb(230, 72, 72);
-}
-
-.delete-btn:hover {
-  background-color: rgb(230, 72, 72, .9);
-}
-
 .btn {
   --bs-btn-padding-x: 0.75rem;
   --bs-btn-padding-y: 0.375rem;
@@ -263,18 +128,4 @@ ul {
 
 .secondary_btn a:hover {
   color: inherit;
-}
-
-/* ========== responsive design ========== */
-@media only screen and (max-width:992px) {
-  .recipes-container {
-    grid-template-columns: 1fr 1fr 1fr;
-    padding: 2%;
-  }
-}
-
-@media only screen and (max-width:768px) {
-  .recipes-container {
-    grid-template-columns: 1fr;
-  }
 }

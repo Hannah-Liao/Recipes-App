@@ -1,12 +1,12 @@
 footer {
     display: flex;
     flex-direction: column;
+    width: 100%;
     background: #1C6758;
     color: #fff;
 }
 
 .footer-content {
-    width: 100%;
     display: grid;
     grid-template-columns: 1fr 1fr 3fr;
     padding: 4rem 5%;
@@ -46,7 +46,13 @@ footer {
 /* ========== responsive design ========== */
 @media screen and (max-width:768px) {
     .footer-content {
-        grid-template-columns: 1fr 1fr 1fr;
+        display: flex;
+        flex-direction: column;
+        padding: 0 5%;
+    }
+
+    .footer-content h3 {
+        margin-top: 2rem;
     }
 }
 

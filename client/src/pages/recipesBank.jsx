@@ -1,5 +1,6 @@
 import { useEffect, useState, useContext } from "react";
 import axios from "axios";
+import "../styles/recipe-bank.css";
 
 import Newsletter from "../components/newsletter/Newsletter";
 import RecipeCard from "../shared/recipe-card/RecipeCard";
@@ -39,14 +40,16 @@ export const RecipesBank = () => {
 
     return (
         <>
-            <div className="recipes-container">
+            <section>
+                <div className="recipes-container">
 
-                {recipes?.map((recipe) => (
-                    <RecipeCard recipe={recipe} refresh={refresh} setRefresh={setRefresh} key={recipe._id} />
-                ))}
-            </div>
+                    {recipes?.map((recipe) => (
+                        <RecipeCard recipe={recipe} refresh={refresh} setRefresh={setRefresh} key={recipe._id} />
+                    ))}
 
-            <Pagination pageCount={pageCount} />
+                </div>
+                <Pagination pageCount={pageCount} />
+            </section>
 
             <Newsletter />
         </>

@@ -1,0 +1,39 @@
+.recipes-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    align-items: start;
+    grid-gap: 1.5rem;
+    padding: 3%;
+}
+
+.recipes-row {
+    position: relative;
+    overflow: hidden;
+    border-radius: 8px;
+}
+
+.recipes-row img {
+    max-width: 100%;
+    margin-bottom: 10px;
+    border-radius: 8px;
+    display: block;
+    transition: transform 0.5s;
+}
+
+.recipes-row:hover img {
+    transform: scale(1.1);
+}
+
+/* ========== responsive design ========== */
+@media only screen and (max-width:992px) {
+    .recipes-container {
+        grid-template-columns: 1fr 1fr 1fr;
+        padding: 2%;
+    }
+}
+
+@media only screen and (max-width:768px) {
+    .recipes-container {
+        grid-template-columns: 1fr;
+    }
+}

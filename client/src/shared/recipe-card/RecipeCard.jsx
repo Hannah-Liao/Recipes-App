@@ -74,7 +74,7 @@ const RecipeCard = ({ recipe, savedRecipes, refresh, setRefresh }) => {
             </div>
 
             <div className='card_body'>
-                <h5 className="recipe_title"><Link to={`/recipes/${_id}`}>{name}</Link></h5>
+                <h2 className="recipe_title"><Link to={`/recipes/${_id}`}>{name}</Link></h2>
                 <h6>Creator: <span> {userOwner}</span></h6>
 
                 <div className="card_bottom">
@@ -82,7 +82,7 @@ const RecipeCard = ({ recipe, savedRecipes, refresh, setRefresh }) => {
                         !savedRecipes ? <button className="btn recipe_card_btn" onClick={() => saveRecipe(_id)} disabled={isRecipeSaved(_id)}>
                             {isRecipeSaved(_id) ? "Saved" : "Save"}
                         </button>
-                            : <button className="btn delete-btn" onClick={() => RemoveRecipe(_id)}>Remove</button>
+                            : <button className="btn btn-dark" onClick={() => RemoveRecipe(_id)}>Remove</button>
                     }
 
                     {

@@ -1,0 +1,35 @@
+.hero_header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 100vh;
+}
+
+.home-text {
+    width: 60%;
+}
+
+.hero_header a {
+    margin-top: 30px;
+    text-decoration: none;
+    color: #fff;
+}
+
+.hero_header img {
+    width: 60%;
+    transform: rotate(10deg);
+    position: absolute;
+    top: 20%;
+    z-index: -1;
+    right: 0;
+}
+
+.slick-slide {
+    padding: 2px;
+}
+
+@media only screen and (max-width:768px) {
+    .hero_header img {
+        display: none;
+    }
+}

@@ -1,5 +1,6 @@
 import { useEffect, useState, useContext } from "react";
 import axios from "axios";
+import "../styles/recipe-bank.css";
 
 import Newsletter from "../components/newsletter/Newsletter";
 import RecipeCard from "../shared/recipe-card/RecipeCard";
@@ -24,7 +25,6 @@ export const SavedRecipes = () => {
         const fetchSavedRecipe = async () => {
             try {
                 const response = await axios.get(`${BASE_URL}/recipes/savedRecipes/${userID}?page=${page}`);
-                console.log(response.data)
 
                 const recipesCount = response.data.count
                 const pages = Math.ceil(recipesCount / 12)
@@ -41,13 +41,15 @@ export const SavedRecipes = () => {
     }, [refresh, page]);
     return (
         <>
-            <div className="recipes-container">
-                {savedRecipes?.map((recipe) => (
-                    <RecipeCard recipe={recipe} savedRecipes={true} refresh={refresh} setRefresh={setRefresh} key={recipe._id} />
-                ))}
-            </div>
+            <section>
+                <div className="recipes-container">
+                    {savedRecipes?.map((recipe) => (
+                        <RecipeCard recipe={recipe} savedRecipes={true} refresh={refresh} setRefresh={setRefresh} key={recipe._id} />
+                    ))}
+                </div>
 
-            <Pagination pageCount={pageCount} />
+                <Pagination pageCount={pageCount} />
+            </section>
 
             <Newsletter />
         </>

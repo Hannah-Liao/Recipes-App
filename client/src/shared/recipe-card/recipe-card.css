@@ -12,29 +12,13 @@
     border-radius: 5px 5px 0 0;
 }
 
-.recipe_title {
-    margin-top: 1rem;
-    font-size: 1.5rem;
-    cursor: pointer;
-}
-
-.recipe_title a {
-    text-decoration: none;
-    color: var(--heading-color);
-    transition: .3s;
-}
-
-.recipe_title a:hover {
-    color: var(--secondary-color);
-}
-
 .card_body {
     padding: 0 5% 5%;
     font-size: 0.8rem;
 }
 
 .card_body h6 {
-    color: var(--secondary-color);
+    color: var(--primary-color);
 }
 
 .card_body h6 span {
@@ -42,14 +26,36 @@
     color: var(--text-color);
 }
 
+.recipe_title {
+    margin-top: 1rem;
+    font-size: 1.5rem;
+    cursor: pointer;
+}
+
+.recipe_title a {
+    text-decoration: underline;
+    color: var(--heading-color);
+    transition: .3s;
+}
+
+.recipe_title a:hover {
+    text-decoration: none;
+}
+
 .card_bottom {
     margin-top: 10px;
+}
+
+button:disabled {
+    color: #666666;
+    cursor: auto;
 }
 
 .recipe_card_btn {
     background: var(--secondary-color) !important;
     cursor: pointer;
-    padding: 0.2rem 0.5rem !important;
+    border-radius: 50px;
+    padding: 0.4rem 0.9rem !important;
 
 }
 
@@ -62,6 +68,21 @@
 .recipe_card_btn a:hover {
     color: #fff;
 }
+
+.delete-btn {
+    border: none;
+    background: #e64848;
+    border-radius: 50px;
+    margin: 0 10px;
+    color: #fff;
+    padding: 0.4rem 0.9rem !important;
+}
+
+.delete-btn:hover {
+    background: rgb(230, 72, 72, 0.9);
+}
+
+
 
 /* ========== responsive design ========== */
 

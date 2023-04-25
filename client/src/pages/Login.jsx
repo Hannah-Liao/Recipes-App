@@ -1,7 +1,8 @@
 import React, { useState, useContext } from 'react'
-import axios from "axios"
 import { useNavigate, Link } from "react-router-dom";
-import './auth.css';
+import axios from "axios"
+import loginImg from "../assets/images/login.svg";
+import '../styles/auth.css';
 
 import { AuthContext } from '../context/AuthContext';
 import { BASE_URL } from '../utils/config';
@@ -30,20 +31,25 @@ const Login = () => {
     }
 
     return (
-        <div className="auth-container">
-            <form onSubmit={handleSubmit}>
-                <h2>Login</h2>
-                <div className="form-group">
-                    <input type="email" id="email" placeholder='Email' value={email} onChange={(e) => setEmail(e.target.value)} />
-                </div>
-                <div className="form-group">
-                    <input type="password" id="password" placeholder='Password' value={password} onChange={(e) => setPassword(e.target.value)} />
-                </div>
-                <button className="btn" type="submit">Login</button>
-            </form>
+        <section className='auth'>
+            <img src={loginImg} alt="" />
 
-            <p>Don't have an account? <Link to="/register">Create</Link></p>
-        </div>
+            <div className="auth-container">
+                <h2>Login</h2>
+
+                <form onSubmit={handleSubmit}>
+                    <div className="form-group">
+                        <input type="email" id="email" placeholder='Email' value={email} onChange={(e) => setEmail(e.target.value)} />
+                    </div>
+                    <div className="form-group">
+                        <input type="password" id="password" placeholder='Password' value={password} onChange={(e) => setPassword(e.target.value)} />
+                    </div>
+                    <button className="btn auth_btn" type="submit">Login</button>
+                </form>
+
+                <p>Don't have an account? <Link to="/register">Create</Link></p>
+            </div>
+        </section>
     );
 
 }

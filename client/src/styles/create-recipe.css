@@ -1,0 +1,47 @@
+.createRecipe {
+    background-image: url(../assets/images/bg.svg);
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.createRecipe-form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    background: rgb(174, 194, 182, .8);
+    border-radius: 5px;
+    min-width: 600px;
+
+}
+
+.createRecipe-form form {
+    display: flex;
+    flex-direction: column;
+}
+
+.createRecipe h2 {
+    margin-bottom: 1.1rem;
+}
+
+.createRecipe-form form input,
+.createRecipe textarea {
+    padding: 10px;
+    font-size: 16px;
+    border-radius: 5px;
+    margin-bottom: 0.8rem;
+    width: 100%;
+}
+
+.createRecipe button {
+    margin-bottom: 0.8rem;
+}
+
+@media only screen and (max-width:576px) {
+    .createRecipe-form {
+        min-width: 400px;
+    }
+}
