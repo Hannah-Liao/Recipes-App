@@ -1,0 +1,23 @@
+{
+  "files": {
+    "main.css": "/static/css/main.d31f8c6a.css",
+    "main.js": "/static/js/main.d97c0682.js",
+    "static/media/home-img.jpg": "/static/media/home-img.c2592bb1fe054392928c.jpg",
+    "static/media/bg.svg": "/static/media/bg.06b8e567dd63f5077a38.svg",
+    "static/media/logo.png": "/static/media/logo.41d8c7504b51ac14239f.png",
+    "static/media/newletter.svg": "/static/media/newletter.85d75c9a73904aa96496be145185fe9e.svg",
+    "static/media/login.svg": "/static/media/login.df1b0b7167efb6ab26c64fd90ad06777.svg",
+    "static/media/sign_up.svg": "/static/media/sign_up.d2b93510e5293891db60489a04cd2829.svg",
+    "static/media/slick.svg": "/static/media/slick.2630a3e3eab21c607e21.svg",
+    "static/media/slick.eot": "/static/media/slick.a4e97f5a2a64f0ab1323.eot",
+    "static/media/slick.ttf": "/static/media/slick.c94f7671dcc99dce43e2.ttf",
+    "static/media/slick.woff": "/static/media/slick.295183786cd8a1389865.woff",
+    "index.html": "/index.html",
+    "main.d31f8c6a.css.map": "/static/css/main.d31f8c6a.css.map",
+    "main.d97c0682.js.map": "/static/js/main.d97c0682.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.d31f8c6a.css",
+    "static/js/main.d97c0682.js"
+  ]
+}
