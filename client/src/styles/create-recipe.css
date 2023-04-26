@@ -1,17 +1,13 @@
 .createRecipe {
     background-image: url(../assets/images/bg.svg);
-    height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
 .createRecipe-form {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    padding: 20px;
+    margin: 5% auto;
+    padding: 3% 6%;
     background: rgb(174, 194, 182, .8);
     border-radius: 5px;
     min-width: 600px;
@@ -25,6 +21,7 @@
 
 .createRecipe h2 {
     margin-bottom: 1.1rem;
+    text-align: center;
 }
 
 .createRecipe-form form input,

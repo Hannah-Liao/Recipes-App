@@ -23,6 +23,11 @@
     width: 20%;
 }
 
+.navigation ul {
+    list-style: none;
+    display: flex;
+}
+
 .navigation a:hover {
     text-decoration: underline;
 }

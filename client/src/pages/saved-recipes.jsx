@@ -38,7 +38,7 @@ export const SavedRecipes = () => {
 
         fetchSavedRecipe();
         window.scrollTo(0, 0)
-    }, [refresh, page]);
+    }, [refresh, page, userID]);
     return (
         <>
             <section>

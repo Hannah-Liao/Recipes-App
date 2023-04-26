@@ -17,11 +17,12 @@
     font-size: 0.8rem;
 }
 
-.card_body h6 {
+.card_body p {
     color: var(--primary-color);
+    font-weight: 600;
 }
 
-.card_body h6 span {
+.card_body p span {
     font-weight: 500;
     color: var(--text-color);
 }
@@ -71,7 +72,7 @@ button:disabled {
 
 .delete-btn {
     border: none;
-    background: #e64848;
+    background: #AF1818;
     border-radius: 50px;
     margin: 0 10px;
     color: #fff;
@@ -79,7 +80,7 @@ button:disabled {
 }
 
 .delete-btn:hover {
-    background: rgb(230, 72, 72, 0.9);
+    background: rgb(175, 24, 24, 0.9);
 }
 
 

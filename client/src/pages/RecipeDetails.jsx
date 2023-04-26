@@ -13,7 +13,7 @@ const RecipeDetails = () => {
 
     const { id } = useParams();
     const [recipe, setRecipe] = useState({})
-    const { _id, name, ingredients, instructions, imageUrl, cookingTime, source, userOwner } = recipe;
+    const { name, ingredients, instructions, imageUrl, cookingTime, source } = recipe;
     useEffect(() => {
         const fetchData = async () => {
             const res = await axios.get(`${BASE_URL}/recipes/${id}`);
@@ -22,7 +22,7 @@ const RecipeDetails = () => {
         }
 
         fetchData()
-    }, [])
+    }, [id])
 
 
     return (
@@ -46,7 +46,7 @@ const RecipeDetails = () => {
                         ))}
                     </ul>
 
-                    <h4>Source: {source}</h4>
+                    <p className='source'>Source: <span> {source}</span></p>
                 </div>
 
                 <div>

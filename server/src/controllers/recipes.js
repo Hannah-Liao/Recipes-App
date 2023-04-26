@@ -20,7 +20,7 @@ export const createRecipe = async (req, res) => {
         const recipes = await recipe.save();
         res.status(200).json({ success: true, message: "Recipe created successfully", data: recipes })
     } catch (err) {
-        res.status(500).json({ success: false, message: "Failed to create. Try again" })
+        res.status(500).json({ success: false, message: "Failed to create. Please fill up all fields" })
     }
 };
 
@@ -41,7 +41,6 @@ export const saveRecipe = async (req, res) => {
 export const getSavedRecipes = async (req, res) => {
 
     const page = parseInt(req.query.page);
-    console.log(page)
     const start = (page - 1) * 12;
     const end = page * 12;
 

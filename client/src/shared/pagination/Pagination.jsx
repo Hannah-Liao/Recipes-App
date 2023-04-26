@@ -17,7 +17,7 @@ const Pagination = ({ pageCount }) => {
 
     useEffect(() => {
         dispatch({ type: "START_PAGE" })
-    }, [])
+    }, [dispatch])
 
     return (
         <div className="pagination">

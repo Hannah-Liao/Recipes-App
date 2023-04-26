@@ -54,9 +54,12 @@ export const CreateRecipe = () => {
         event.preventDefault();
 
         try {
+
+            if (!user) alert("please sign in")
+
             await axios.post(`${BASE_URL}/recipes`, recipe, { headers: { authorization: token } })
 
-            navigate("/");
+            navigate("/recipes-bank");
         } catch (err) {
             alert(err.response.data.message);
         }
@@ -103,7 +106,7 @@ export const CreateRecipe = () => {
 
                     <input type="number" id="cookingTime" name="cookingTime" placeholder="Cooking Time" onChange={handleChange} />
 
-                    <input type="text" id="source" name="source" placeholder="Source" onChange={handleChange} />
+                    <input type="text" id="source" name="source" placeholder="Source(optional)" onChange={handleChange} />
 
                     <button className="btn primary_btn" type="submit">Submit recipe</button>
                 </form>

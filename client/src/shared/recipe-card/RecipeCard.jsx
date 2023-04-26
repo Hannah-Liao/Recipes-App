@@ -7,9 +7,9 @@ import "./recipe-card.css";
 import { AuthContext } from "../../context/AuthContext";
 import { BASE_URL } from "../../utils/config";
 
-const RecipeCard = ({ recipe, savedRecipes, refresh, setRefresh }) => {
+const RecipeCard = ({ recipe, savedRecipes, refresh, setRefresh, trending }) => {
 
-    const { _id, name, ingredients, instructions, imageUrl, cookingTime, source, userOwner } = recipe;
+    const { _id, name, imageUrl, userOwner } = recipe;
     const [savedRecipesID, setSavedRecipesID] = useState([]);
 
     const { user } = useContext(AuthContext);
@@ -30,7 +30,7 @@ const RecipeCard = ({ recipe, savedRecipes, refresh, setRefresh }) => {
 
         if (user) { fetchSavedRecipesID(); }
 
-    }, [setSavedRecipesID]);
+    }, [savedRecipesID, user, userID]);
 
     const saveRecipe = async (recipeID) => {
         try {
@@ -48,10 +48,10 @@ const RecipeCard = ({ recipe, savedRecipes, refresh, setRefresh }) => {
 
     const RemoveRecipe = async (savedRecipesID) => {
         try {
-            setRefresh(!refresh)
             await axios.patch(`${BASE_URL}/recipes/savedRecipes/ids/${userID}`,
                 { savedRecipesID }
             );
+            await setRefresh(!refresh)
         } catch (err) {
             console.log(err)
         }
@@ -59,8 +59,8 @@ const RecipeCard = ({ recipe, savedRecipes, refresh, setRefresh }) => {
 
     const DeteleRecipe = async (RecipesID) => {
         try {
-            setRefresh(!refresh)
             await axios.delete(`${BASE_URL}/recipes/${RecipesID}`);
+            await setRefresh(!refresh)
         } catch (err) {
             console.log(err)
         }
@@ -70,12 +70,12 @@ const RecipeCard = ({ recipe, savedRecipes, refresh, setRefresh }) => {
         <div className='recipe_card'>
 
             <div className="recipe_img">
-                <img src={imageUrl} alt="" />
+                <img src={imageUrl} alt="recipe_image" />
             </div>
 
             <div className='card_body'>
                 <h2 className="recipe_title"><Link to={`/recipes/${_id}`}>{name}</Link></h2>
-                <h6>Creator: <span> {userOwner}</span></h6>
+                <p>Creator: <span> {userOwner}</span></p>
 
                 <div className="card_bottom">
                     {
@@ -86,7 +86,7 @@ const RecipeCard = ({ recipe, savedRecipes, refresh, setRefresh }) => {
                     }
 
                     {
-                        userName === userOwner ? <button className="btn delete-btn" onClick={() => DeteleRecipe(_id)}>Detele</button> : null
+                        userName === userOwner && trending !== true ? <button className="btn delete-btn" onClick={() => DeteleRecipe(_id)}>Detele</button> : null
                     }
                 </div>
 

@@ -56,7 +56,7 @@ const TrendingReicipe = () => {
         <Slider {...settings}>
 
             {recipes?.map((recipe) => (
-                <RecipeCard recipe={recipe} key={recipe._id} />
+                <RecipeCard recipe={recipe} key={recipe._id} trending={true} />
             ))}
 
         </Slider>

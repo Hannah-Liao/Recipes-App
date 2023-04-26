@@ -62,9 +62,9 @@ export const Navbar = () => {
             {/* --------------------- nromal menu -------------------- */}
             <div className="navigation">
                 <ul className="lg-menu">
-                    <Link to="/recipes-bank">Recipes</Link>
-                    <Link to="/create-recipe">Create</Link>
-                    {user && <Link to="/saved-recipes">Saved Recipes</Link>}
+                    <li> <Link to="/recipes-bank">Recipes</Link></li>
+                    <li> <Link to="/create-recipe">Create</Link></li>
+                    {user && <li> <Link to="/saved-recipes">Saved Recipes</Link></li>}
                 </ul>
             </div>
 

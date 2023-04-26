@@ -33,9 +33,9 @@ export const Footer = () => {
                 <div className="links-container">
                     <h3>Connect</h3>
 
-                    <Link to="https://en-gb.facebook.com/"><FontAwesomeIcon className="footer-icons" icon={faFacebook} /></Link>
-                    <Link to="https://www.instagram.com/"><FontAwesomeIcon className="footer-icons" icon={faInstagram} /></Link>
-                    <Link to="https://twitter.com/"><FontAwesomeIcon className="footer-icons" icon={faTwitter} /></Link>
+                    <Link to="https://en-gb.facebook.com/" aria-label="Facebook"><FontAwesomeIcon className="footer-icons" icon={faFacebook} /></Link>
+                    <Link to="https://www.instagram.com/" aria-label="Instagram"><FontAwesomeIcon className="footer-icons" icon={faInstagram} /></Link>
+                    <Link to="https://twitter.com/" aria-label="Twitter"><FontAwesomeIcon className="footer-icons" icon={faTwitter} /></Link>
                 </div>
             </div>
 
