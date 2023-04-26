@@ -3,8 +3,8 @@ import mongoose from "mongoose";
 
 const recipeSchema = new mongoose.Schema({
     name: { type: String, required: true },
-    ingredients: [{ type: String, required: true }],
-    instructions: [{ type: String, required: true }],
+    ingredients: { type: [String], validate: v => Array.isArray(v) && v.length > 0 },
+    instructions: { type: [String], validate: v => Array.isArray(v) && v.length > 0 },
     imageUrl: { type: String, required: true },
     cookingTime: { type: Number, required: true },
     source: { type: String },
