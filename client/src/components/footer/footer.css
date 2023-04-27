@@ -46,13 +46,17 @@ footer {
 /* ========== responsive design ========== */
 @media screen and (max-width:768px) {
     .footer-content {
-        display: flex;
-        flex-direction: column;
-        padding: 0 5%;
+        display: block;
+        padding-top: 5%;
+        padding-bottom: 0;
     }
 
     .footer-content h3 {
-        margin-top: 2rem;
+        margin-bottom: 0.8rem;
+    }
+
+    .links-container {
+        margin-bottom: 2rem;
     }
 }
 

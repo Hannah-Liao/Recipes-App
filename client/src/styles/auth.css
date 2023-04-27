@@ -11,7 +11,7 @@
     background-color: var(--secondary-color);
     border-radius: 5px;
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
-    width: 80%;
+    width: 100%;
 }
 
 .auth-container h2 {
@@ -53,5 +53,27 @@ input:focus {
     text-decoration: none;
     margin-left: 5px;
     font-weight: 700;
+
+}
+
+/* ========== responsive design ========== */
+@media screen and (max-width:992px) {
+    .auth img {
+        width: 50%;
+        padding: 3%;
+    }
+}
+
+@media screen and (max-width:768px) {
+    .auth img {
+        display: none;
+
+    }
+}
+
+@media only screen and (max-width:576px) {
+    .auth-container {
+        padding: 30px;
+    }
 
 }

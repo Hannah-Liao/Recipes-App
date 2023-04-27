@@ -101,7 +101,7 @@ a {
   background: #1C6758 !important;
   border: none !important;
   border-radius: 50px !important;
-  padding: 0.4rem 1rem !important;
+  padding: 0.4rem 1rem;
 }
 
 .primary_btn a {
@@ -128,4 +128,12 @@ a {
 
 .secondary_btn a:hover {
   color: inherit;
+}
+
+/* ========== responsive design ========== */
+
+@media only screen and (max-width:768px) {
+  h1 {
+    font-size: 3rem;
+  }
 }

@@ -57,7 +57,7 @@ export const Navbar = () => {
         <header className="navbar" ref={headerRef}>
 
             {/* -------------------- logo -------------------- */}
-            <Link className="logo" to="/"><img src={logo} alt="logo" width={45} /></Link>
+            <Link className="logo" to="/"><img src={logo} alt="logo" /></Link>
 
             {/* --------------------- nromal menu -------------------- */}
             <div className="navigation">
@@ -76,7 +76,7 @@ export const Navbar = () => {
                             <button className="btn secondary_btn" >
                                 <Link to="/login">Login</Link>
                             </button>
-                            <button className="btn primary_btn" >
+                            <button className="btn primary_btn register-btn" >
                                 <Link to="/register">Register</Link>
                             </button>
 

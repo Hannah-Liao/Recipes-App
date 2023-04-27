@@ -23,6 +23,11 @@
     width: 20%;
 }
 
+.logo img {
+    width: 45px;
+    height: 45px;
+}
+
 .navigation ul {
     list-style: none;
     display: flex;
@@ -145,17 +150,13 @@
         display: block;
     }
 
-    .lg-menu {
+    .navigation ul li a {
         display: none;
     }
 
     .navbar {
         justify-content: space-around;
         padding-left: 0;
-    }
-
-    .logo {
-        width: 50%;
     }
 
     .burger-menu {
@@ -172,4 +173,22 @@
     .menu {
         width: calc(100% - 50%);
     }
+
+    .faUser,
+    .nav_right h5 {
+        display: none;
+    }
+
+    .nav_right button {
+        font-size: 0.8rem;
+        margin-left: 10px;
+        padding: 0.4rem 0.1rem;
+    }
+}
+
+@media only screen and (max-width:576px) {
+    .register-btn {
+        display: none;
+    }
+
 }
