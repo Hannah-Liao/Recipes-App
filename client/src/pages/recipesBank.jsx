@@ -12,6 +12,7 @@ import { BASE_URL } from "../utils/config";
 export const RecipesBank = () => {
     const [recipes, setRecipes] = useState([]);
     const [refresh, setRefresh] = useState(true);
+    const [loading, setLoading] = useState(false);
 
     const [pageCount, setPageCount] = useState(0);
 
@@ -20,6 +21,7 @@ export const RecipesBank = () => {
     useEffect(() => {
 
         const fetchRecipe = async () => {
+            setLoading(true)
             try {
                 const response = await axios.get(`${BASE_URL}/recipes?page=${page === 0 ? 0 : page - 1}`);
                 const res = await axios.get(`${BASE_URL}/recipes/search/getRecipeCount`);
@@ -28,9 +30,10 @@ export const RecipesBank = () => {
                 const pages = Math.ceil(recipesCount / 12)
                 setPageCount(pages);
                 setRecipes(response.data.recipes)
-
+                setLoading(false)
             } catch (err) {
                 console.log(err)
+                setLoading(false)
             }
         };
         fetchRecipe();
@@ -39,9 +42,11 @@ export const RecipesBank = () => {
     }, [page, refresh]);
 
     return (
+
         <>
             <section>
                 <div className="recipes-container">
+                    {loading && <h4>Loading........</h4>}
 
                     {recipes?.map((recipe) => (
                         <RecipeCard recipe={recipe} refresh={refresh} setRefresh={setRefresh} key={recipe._id} />

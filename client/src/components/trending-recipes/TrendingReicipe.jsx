@@ -38,14 +38,18 @@ const TrendingReicipe = () => {
     }
 
     const [recipes, setRecipes] = useState([]);
+    const [loading, setLoading] = useState(false);
 
     useEffect(() => {
         const fetchRecipe = async () => {
+            setLoading(true)
             try {
                 const response = await axios.get(`${BASE_URL}/recipes`);
                 setRecipes(response.data.recipes)
+                setLoading(false)
             } catch (err) {
                 console.log(err)
+                setLoading(false)
             }
         };
         fetchRecipe();
@@ -54,6 +58,8 @@ const TrendingReicipe = () => {
 
     return (
         <Slider {...settings}>
+
+            {loading && <h4>Loading........</h4>}
 
             {recipes?.map((recipe) => (
                 <RecipeCard recipe={recipe} key={recipe._id} trending={true} />

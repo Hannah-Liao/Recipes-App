@@ -13,7 +13,7 @@ import { BASE_URL } from "../utils/config";
 export const SavedRecipes = () => {
     const [savedRecipes, setSavedRecipes] = useState([]);
     const [refresh, setRefresh] = useState(false);
-
+    const [loading, setLoading] = useState(false);
     const [pageCount, setPageCount] = useState(0);
 
     const { page } = useContext(PageContext);
@@ -23,6 +23,7 @@ export const SavedRecipes = () => {
     useEffect(() => {
 
         const fetchSavedRecipe = async () => {
+            setLoading(true)
             try {
                 const response = await axios.get(`${BASE_URL}/recipes/savedRecipes/${userID}?page=${page}`);
 
@@ -31,8 +32,10 @@ export const SavedRecipes = () => {
 
                 setPageCount(pages);
                 setSavedRecipes(response.data.savedRecipes)
+                setLoading(false)
             } catch (err) {
                 console.log(err)
+                setLoading(false)
             }
         };
 
@@ -43,6 +46,7 @@ export const SavedRecipes = () => {
         <>
             <section>
                 <div className="recipes-container">
+                    {loading && <h4>Loading........</h4>}
                     {savedRecipes?.map((recipe) => (
                         <RecipeCard recipe={recipe} savedRecipes={true} refresh={refresh} setRefresh={setRefresh} key={recipe._id} />
                     ))}
