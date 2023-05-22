@@ -20,7 +20,7 @@ const __dirname = path.dirname("")
 app.use(express.static(path.join(__dirname, '../client/build')));
 
 app.get('/', function (req, res) {
-    res.sendFile(path.join(__dirname, '../client/buildindex.html'));
+    res.sendFile(path.join(__dirname, '../client/build/index.html'));
 });
 
 app.use("/api/v1/auth", userRouter);
